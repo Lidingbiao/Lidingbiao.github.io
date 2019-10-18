@@ -172,7 +172,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>第二章：类和对象<br>1．类的语法   public class  类名{ }<br>2.创建类的步骤 Filenewclass类名<br>3.什么是类?什么是对象?<br>简单来说,类是抽象出某一类事物的行为和特征,并进行的封装,特征称之为属性,行为称之为方法;<br>对象就是这一类的具体实例,对象拥有这个类的所有属性和方法<br>4．如何创建对象<br>类名  对象名= new 类名（）；<br>5.对象名.属性名（public）<br>对象名.方法名（public）<br>6.构造方法：方法名和类名一致，没有返回值<br>public class 类名{<br>    public 类名（）{}<br>}<br>7.什么时候执行构造方法<br>New  类名（）；-执行了构造方法<br>在继承中super（）；执行了构造方法<br>8.构造方法重载：在同一个类中，有两个构造方法，他们方法名相同，参数类型，个数，顺序不同。<br>public class 类名{<br>    public 类名（）{}<br>public 类名（String name）{}<br>public 类名（String name，int age）{}<br>}<br>注意：一般构造方法是为了做初始化操作<br>9.static：静态变量。可以修饰属性，方法，代码块。<br>类名.属性  类名.方法<br>拓展：gc（java垃圾回收），Java的内存（栈和堆），static</p>
+<p>第三章：面向对象三大特征（封装）<br>1.封装概念<br>封装是实现面向对象程序设计的第一步，封装就是将属性和方法放在一个类中。对外提供服务时尽可能的隐藏对象内部细节，只保留有限的接口和方法;<br>2.封装的步骤<br> 1.把变量设置为私有化（private 变量）<br> 2.将对应的get和set方法设置为共有的public<br> 3.通过set和get方法进行相应的操作<br>3.修饰符<br>Public 共有的（整个项目中都可以获取到）<br>Private 私有的（只有在本类中可以获取）<br>Protected 安全的（同一个包中或同一个类中可以使用）<br>Default  默认的<br>4.this<br>This指当前的对象<br>第四章：面向对象三大特征（继承）</p>
+<ol>
+<li>继承以后子类可以得到什么：<br> 子类直接拥有父类非private的属性和方法<br> 子类可以添加自己的属性和方法，即对父类进行扩展<br> 子类可以重写父类的方法</li>
+<li>关键字extends</li>
+<li>语法：public class 类名 extends 父类名{}</li>
+<li>super关键字<br>  1.super指父类对象 super.变量 super.方法<br>  2.super（）指父类构造方法<br>要求：1.调用父类的构造方法必须是在子类的构造方法中<pre><code>2.必须是在第一行</code></pre></li>
+<li>重写</li>
+<li>必须是在继承关系中</li>
+<li>方法名一致，参数类型 个数 顺序完全相同</li>
+<li>只能子类重写父类方法<br>第五章：多态<br>1．多态的概念<br>同一操作作用于不同的对象，可以产生不同的执行结果，这就是多态性。<br>Java的多态性体现在两个方面：由方法重载实现的静态多态性（编译时多态）和方法重写实现的动态多态性（运行时多态）。<br>2．多态的必要条件：继承，重写，父类引用指向子类对象<br>3．多态的使用：<br>  向上转型：Father  son=new  Son();<br>  向下转型：Son  son=(Son)father;<br>第六章：抽象<br>1．抽象的概念<br>抽象就是用程序的逻辑方法和数据结构来模拟现实的世界。<br>2．抽象的关键字<pre><code>abstract   可以修饰类，可以修饰方法</code></pre>3．抽象的用法<pre><code>//抽象类
+public  abstract  class类名{
+//抽象方法没有方法体
+    Public  abstract  void 方法名();
+}
+//当父类是抽象类的时候，子类必须重写父类里面的抽象方法</code></pre>4．final修饰符：最终的<pre><code>修饰变量，修饰方法，修饰类
+1，当修饰变量时，变量转换成常量，常量的值不能改变
+final  int  a=18;//不能被改变，必须给一个初始值
+2，当修饰方法时，该方法不能被重写
+3，当修饰类时，该类不能被继。</code></pre>因为不能被继承，所以此类方法中所有方法默认都是final修饰。<br>该类如果不需要子类，不需要扩展，类中的方法不能被重写，就用final修饰该类<br>第七章：接口<br>1．接口的概念<br>接口是一种规范和标准，它们可以约束类的行为是一些方法特征的集合，但是没有方法的实现。<br>（1）接口声明：interface 接口名；    接口体:包括常量定义和方法定义，方法只允许声明不允许实现。<br>（2）接口使用：class A implements print,add       或者  class A extends A1 implements print,add<br>（3）当某个类使用接口的时候，必须给出所有方法的实现，方法的类型、参数一定要和接口的一致；接口的方法默认为public abstract，故类在实现时一定不能漏写public关键字；接口常量默认关键字为public static。<br>（4）因为接口中只含有public static final 常量和public abstract方法，故在写接口的时候可以省略这些关键字。<br>（5）如果接口的返回类型不是void，那么实现方法体的时候，至少要有一个return语句；如果接口的返回类型是void，可以除了大括号之外可以没有任何语句。<br>（6）Java提供的接口都在相应的包中，可以通过引入包使用相应的接口；也可以自定义接口，一个源文件就是由类和接口来组成的。<br>（7）类实现的接口的方法以及接口中的常量可以通过类的对象进行调用，常量也可以通过类名和接口名进行调用。<br>（8）接口声明的时候，如果加上关键字public，那么接口可以被任一个类进行调用，如果没有public则为友好型接口，只能被同一个包内的类进行调用。<br>（9）如果父类使用某个接口，那么子类也就使用了接口，不用再使用implements。<br>（10）接口可以通过extends继承接口。<br>（11）如果一个类声明实现一个接口但没有实现接口的所有方法，那么这个类一定得是abstract类。<br>2．接口的关键字：Interface<br>3．接口的语法：<pre><code>public  Intertface  接口名()
+File-new-Interface//创建接口</code></pre>4．接口的用法：<pre><code>实现接口的关键字  implements
+Public  interface  类名（）{}</code></pre>  注意：接口可以进行多继承<br>第八章：集合框架<br>1．ArrayList<br>  1．用法<br>  ArrayList  list=new  ArrayList();<br>  list.add();//添加数据<br>  list.get();//获取数据<br>2．Map<br>  用法<br>  Map  map=new  HasMap();<br>  map.put(key,value);//key不能重复<br>  map.get(key);//获取key对象的value<br>  Map中的key不要求有序，不允许重复。Value同样不要求有序，但允许重复。<br>3．泛型<br>  ArrayList<string>  list=new  ArayList<string>();<br>  Map&lt;String,String&gt;</string></string></li>
+<li>List和set集合的区别<br>List继承collection接口，存储一组不唯一（允许重复）、有序（以元素插入的次序来放置元素，不会重新排列）的对象。<br>Set继承collection接口，存储一组不唯一（不允许重复）、无序的对象。</li>
+<li>List和map集合的区别<br>List继承collection接口，存储一组不唯一（允许重复）、有序（以元素插入的次序来放置元素，不会重新排列）的对象。<br>Map接口存储一组成对的键值对象，提供key到value的映射。Map中的key不要求有序，不允许重复。Value同样不要求有序，但允许重复。<br>第九章 高级功能-文件操作</li>
+<li>输入流对象类型<br>BufferedReader</li>
+<li>输出流对象类型<br>OutputStream（字节输出流）<br>Writer（字符输出流）</li>
+<li>字节输出流步骤<br>（1）.引入相关的类<br>（2）.构造一个文件输出流对象<br>（3）.利用文件输出流的方法把数据写入文本文件中<br>（4）.关闭文件输出流</li>
+<li>读文件<br>InputStream（字节输入流）<br>Reader（字符输入流）<br>第十章 高级功能-多线程</li>
+<li>创建多线程的方式有哪些<br>实现Runnable接口<br>继承Thread类</li>
+<li>同步的关键字是什么<br>synchronized</li>
+</ol>
+
       
 
       
